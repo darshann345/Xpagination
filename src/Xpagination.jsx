@@ -21,7 +21,7 @@ const TableWithPagination = () => {
       setData(result);
     } catch (error) {
       setError(error.message);
-      alert(error.message)
+      alert(error.message);
     }
   };
 
@@ -33,13 +33,13 @@ const TableWithPagination = () => {
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage(prevPage => prevPage + 1); 
     }
   };
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage(prevPage => prevPage - 1); 
     }
   };
 
@@ -71,13 +71,15 @@ const TableWithPagination = () => {
         </tbody>
       </table>
 
-      <div style = {{display:"flex",justifyContent : "center",alignItems : "flex-end" , gap : "25px"}}>
-        <button className={style.button} onClick={handlePreviousPage} disabled>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: '25px' }}>
+        <button className={style.button} onClick={handlePreviousPage} disabled={currentPage === 1}>
           Previous
         </button>
-        <span style={{ width: "30px", height: "33px", display: "flex", alignItems: "center", justifyContent: "center" , backgroundColor : " #04AA6D", color : "white"}}>
+
+        <span style={{ width: '30px', height: '33px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {currentPage}
         </span>
+
         <button className={style.button} onClick={handleNextPage} disabled={currentPage === totalPages}>
           Next
         </button>
