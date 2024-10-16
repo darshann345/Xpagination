@@ -75,9 +75,9 @@ const TableWithPagination = () => {
         <button className={style.button} onClick={handlePreviousPage} disabled={currentPage === 1}>
           Previous
         </button>
-        <button style={{width : "30px",height : "33px",display : "flex" ,alignItems :"center"}}>
+        <span style={{ width: "30px", height: "33px", display: "flex", alignItems: "center", justifyContent: "center" , backgroundColor : " #04AA6D", color : "white"}}>
           {currentPage}
-        </button>
+        </span>
         <button className={style.button} onClick={handleNextPage} disabled={currentPage === totalPages}>
           Next
         </button>
