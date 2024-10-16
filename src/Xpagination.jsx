@@ -72,7 +72,7 @@ const TableWithPagination = () => {
       </table>
 
       <div style = {{display:"flex",justifyContent : "center",alignItems : "flex-end" , gap : "25px"}}>
-        <button className={style.button} onClick={handlePreviousPage} disabled={currentPage === 1}>
+        <button className={style.button} onClick={handlePreviousPage} disabled>
           Previous
         </button>
         <span style={{ width: "30px", height: "33px", display: "flex", alignItems: "center", justifyContent: "center" , backgroundColor : " #04AA6D", color : "white"}}>
