@@ -21,6 +21,7 @@ const TableWithPagination = () => {
       setData(result);
     } catch (error) {
       setError(error.message);
+      alert(error.message)
     }
   };
 
