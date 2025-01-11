@@ -13,12 +13,15 @@ function App() {
         const response = await fetch(
           `https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json`
         );
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const res = await response.json();
         setData(res);
       } catch (error) {
         console.error('Failed to fetch Employee Data', error);
-        setError(error);
-        alert(error)
+        alert(error);
+        setError('Failed to fetch employee data. Please try again later.');
       }
     };
 
@@ -29,16 +32,19 @@ function App() {
   const itemsofFirstIndex = itemsoflastIndex - itemPerPage;
   const currentData = data.slice(itemsofFirstIndex, itemsoflastIndex);
   const totalPage = Math.ceil(data.length / itemPerPage);
+
   const handleNextPage = () => {
     if (currentPage < totalPage) {
       setCurrentPage((prev) => prev + 1);
     }
   };
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
     }
   };
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -59,18 +65,14 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {currentData.map((item) => {
-              return (
-                <>
-                  <tr>
-                    <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.role}</td>
-                  </tr>
-                </>
-              );
-            })}
+            {currentData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.role}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <div
@@ -81,9 +83,13 @@ function App() {
             gap: '20px',
           }}
         >
-          <button onClick={handlePrevPage}>Prev</button disabled = {currentPage === 1}>
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            Previous
+          </button>
           <p style={{ position: 'relative', bottom: '10px' }}>{currentPage}</p>
-          <button onClick={handleNextPage} disable = {currentPage === totalPage}>Next</button>
+          <button onClick={handleNextPage} disabled={currentPage === totalPage}>
+            Next
+          </button>
         </div>
       </div>
     </>
