@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from "./App.css";
+import './App.css'; // Ensure you have this CSS file for styling
 
 const App = () => {
   const [data, setData] = useState([]);
