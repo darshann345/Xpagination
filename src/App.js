@@ -19,9 +19,8 @@ function App() {
         const res = await response.json();
         setData(res);
       } catch (error) {
-        console.error('Failed to fetch Employee Data', error);
-        setError('Failed to fetch employee data. Please try again later.');
-        alert('Failed to fetch employee data. Please try again later.'); // Alert on error
+        alert('Failed to fetch data');     
+        setError(error)
       }
     };
 
@@ -34,16 +33,16 @@ function App() {
   const totalPage = Math.ceil(data.length / itemPerPage);
 
   const handleNextPage = () => {
-    if (currentPage < totalPage) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
+  if (currentPage < totalPage) {
+    setCurrentPage((prev) => prev + 1);
+  }
+};
 
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
+const handlePrevPage = () => {
+  if (currentPage > 1) {
+    setCurrentPage((prev) => prev - 1);
+  }
+};
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -84,7 +83,7 @@ function App() {
           }}
         >
           <button onClick={handlePrevPage} disabled={currentPage === 1}>
-            Prev
+            Previous
           </button>
           <p style={{ position: 'relative', bottom: '10px' }}>{currentPage}</p>
           <button onClick={handleNextPage} disabled={currentPage === totalPage}>
