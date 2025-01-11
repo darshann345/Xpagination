@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import style from "./App.css";
 
-function App() {
- const [data, setData] = useState([]);
+const App = () => {
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
   const [error, setError] = useState(null);
@@ -86,5 +86,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
+
 export default App;
