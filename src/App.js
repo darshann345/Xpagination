@@ -20,7 +20,6 @@ function App() {
         setData(res);
       } catch (error) {
         console.error('Failed to fetch Employee Data', error);
-        alert(error);
         setError('Failed to fetch employee data. Please try again later.');
       }
     };
@@ -84,7 +83,7 @@ function App() {
           }}
         >
           <button onClick={handlePrevPage} disabled={currentPage === 1}>
-            Previous
+            Prev
           </button>
           <p style={{ position: 'relative', bottom: '10px' }}>{currentPage}</p>
           <button onClick={handleNextPage} disabled={currentPage === totalPage}>
