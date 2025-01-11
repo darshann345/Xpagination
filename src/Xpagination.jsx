@@ -16,7 +16,8 @@ function App() {
         const res = await response.json();
         setData(res);
       } catch (error) {
-        console.error('Failed to fetch Employee Data', error);
+        //console.error('Failed to fetch Employee Data', error);
+        alert(`fetch Data Failed')
         setError(error);
       }
     };
