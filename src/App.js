@@ -83,7 +83,7 @@ function App() {
           }}
         >
           <button onClick={handlePrevPage} disabled={currentPage === 1}>
-            Prev
+            Previous
           </button>
           <p style={{ position: 'relative', bottom: '10px' }}>{currentPage}</p>
           <button onClick={handleNextPage} disabled={currentPage === totalPage}>
