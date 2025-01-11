@@ -80,7 +80,7 @@ function App() {
             gap: '20px',
           }}
         >
-          <button onClick={handlePrevPage}>Prev</button>
+          <button onClick={handlePrevPage}>Previous</button>
           <p style={{ position: 'relative', bottom: '10px' }}>{currentPage}</p>
           <button onClick={handleNextPage}>Next</button>
         </div>
